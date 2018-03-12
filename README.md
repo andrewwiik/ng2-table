@@ -47,21 +47,41 @@ Follow me [![twitter](https://img.shields.io/twitter/follow/valorkin.svg?style=s
   - `filtering` (`?any`) - switch on the filtering plugin
     - `filterString` (`string`) - the default value for filter
     - `columnName` (`string`) - the property name in raw data
+  - `className` (`string|Array<string>`) - additional CSS classes that should be added to a <table>
+  - `multiSelect` (`?boolean`) - Enables select checkboxes
+  - `checkboxRule` (`?string`) - Boolean expression to enable checkboxes, If not given all checkboxes will be enabled
 
 - `rows` (`?Array<any>`) - only list of the rows which should be displayed
+  - `is_disabled` (`?boolean`) - Disables row action buttons
 - `columns` (`?Array<any>`) - config for columns (+ sorting settings if it's needed)
     - `title` (`string`) - the title of column header
     - `name` (`string`) - the property name in data
     - `sort` (`?string|boolean`) - config for columns (+ sorting settings if it's needed), sorting is switched on by default for each column
+    - `className` (`string|Array<string>`) - additional CSS classes that should be added to a column header
+    - `filtering` (`?any`) - switch on the filtering plugin
+      - `filterString` (`string`) - the default value for filter
+      - `columnName` (`string`) - the property name in raw data
+    - `links` (array of strings containing the links to display) - Contains the links that need to be shown. If this is setup, then the title of the column must be "Actions". Please refer to
+      the example to see how its done
+    - `edit` (`boolean`) - Editable 
+    - `type` (`string`) - `(text|number)` Type of input of editable cell or type of display type of cell
+    - `length`(`number`)- Defines length of no of characters to be shown
+    - `farction` (`number`) - Defines no of decimal points
 
 ### Outputs (Events)
 
-- `table-changed` - onclick event handler
+- `tableChanged`: data change event handler
+- `cellClicked`: onclick event handler
+- `linkClicked`: Event Handler when a link is clicked. Contains the Link name, row, column
+- `selectedRecords`: Event handler to emit selected records
+- `valueChanges`: Event handler to emit changed value details on cell input changes
 
 ### Filter
 
 The responsibility of the filtering issue falls on user. You should choose on which columns the filter would be applied. You could add any number of different filters.
 Filter string - it's a string for matching values in raw data. Column name refers to the property name in raw data. The rest logic you could organize by yourself (the order of filters, data formats, etc). Even you could use filter for list of data columns.
+
+You can also set up `filtering` param for columns, in this case filter box will appear in first row of the table.
 
 ### Sorting
 
@@ -71,7 +91,9 @@ Data sorting could be in 3 modes: asc, desc and without sorting data (as it come
 
 Pagination could be used from [ng2-bootstrap](https://github.com/valor-software/ng2-bootstrap) - [pagination component](http://valor-software.github.io/ng2-bootstrap/#pagination). When the page is changed, the pagination component will emit event `change-table` with an object {page, itemsPerPage}. Then you can easily subscribe on it and request corresponding raw data.
 
+### Links
 
+If you want to display Links, the title of the column must be called "Actions" and an additional property called `links` available which is an array of strings for the links to display
 ## Troubleshooting
 
 Please follow this guidelines when reporting bugs and feature requests:
