@@ -36,11 +36,11 @@
     "filter",
     "sort"
   ],
-  "author": "Dmitriy Shekhovtsov <valorkin@gmail.com>",
+  "author": "iOS Creatix <ioscreatix@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/santhakumarp/ng2-table.git#developement"
+    "url": "git+ssh://git@github.com/ioscreatix/ng2-table.git"
   },
   "bugs": {
     "url": "https://github.com/valor-software/ng2-table/issues"
